@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('spells', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('spell_type_id');
+            // $table->foreign('spell_type_id')->references('id')->on('spell_types');
+            $table->string('name');   
             $table->timestamps();
         });
     }
@@ -26,6 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
+      
         Schema::dropIfExists('spells');
     }
 };

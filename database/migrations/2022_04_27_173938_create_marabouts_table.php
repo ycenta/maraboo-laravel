@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('marabouts', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->datetime('activity_begin_date');
+            $table->string('phone');
+            $table->string('address');
+            $table->string('mail');
+            $table->string('picture_url');
             $table->timestamps();
         });
     }
