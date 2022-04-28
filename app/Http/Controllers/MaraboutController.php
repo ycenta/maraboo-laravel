@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Marabout;
+use Auth;
 
 class MaraboutController extends Controller
 {
@@ -23,18 +24,24 @@ class MaraboutController extends Controller
 
     public function createMarabout(Request $request)
     {
-        // Message::where('id','!=',1)->get();
+        $id = Auth::id();
 
-        $marabout = Marabout::create([
-            'name' => $request->maraboutname,
-            'activity_begin_date' => $request->activity_begin_date,
-            'phone'=>$request->phone,
-            'address'=>$request->address,
-            'mail'=>$request->mail,
-            'picture_url'=>'url_du_cul'
-        ]);
+        if ($id) {
+            $marabout = Marabout::create([
+                'name' => $request->maraboutname,
+                'activity_begin_date' => $request->activity_begin_date,
+                'phone'=>$request->phone,
+                'address'=>$request->address,
+                'mail'=>$request->mail,
+                'resume'=>$request->resume,
+                'user_id'=>$id,
+                'picture_url'=>'url_du_cul'
+            ]);
 
-        return redirect()->route('profilmarabout',['id'=>$marabout->id]);
+            return redirect()->route('profilmarabout',['id'=>$marabout->id]);
+        } else {
+            abort(403);
+        }
 
 
 

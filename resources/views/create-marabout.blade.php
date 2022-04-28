@@ -5,8 +5,8 @@
 	<input type="text" name="phone" placeholder="Type your phone number..."><br>
 	<input type="email" name="mail" placeholder="example@mail.com"><br>
 	<input type="text" name="address" placeholder="Type your adress..."><br>
-	
-	<!-- <input type="file" name="picture_url"><br> -->
+	<input type="text" name="resume" placeholder="Type a resume..."><br>
+	<input type="file" name="picture_url"><br><br>
 
 	<input type="submit" value="Create Maraboo">
 </form>

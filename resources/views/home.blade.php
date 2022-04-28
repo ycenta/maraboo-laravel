@@ -134,97 +134,21 @@
 
 <div id="content" class="container">
     <div class="row row-cols-1 row-cols-md-4 g-4">
-  <div class="col">
-    <div class="card">
-      <img src="img/test.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Prénom NOM</h5>
-        <div class="div-info">
-            <p><i class="fa-solid fa-location-dot"></i>&nbsp;Ville</p>
-            <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
+      @foreach($marabouts as $marabout)
+      <div class="col">
+        <div class="card">
+          <img src="img/test.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ $marabout->name }}</h5>
+            <div class="div-info">
+                <p><i class="fa-solid fa-location-dot"></i>&nbsp;{{ $marabout->address }}</p>
+                <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
+            </div>
+            <p class="card-text">{{ $marabout->resume }}</p>
+          </div>
         </div>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="img/test2.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <div class="div-info">
-            <p><i class="fa-solid fa-location-dot"></i>&nbsp;Ville</p>
-            <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
-        </div>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="img/test2.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <div class="div-info">
-            <p><i class="fa-solid fa-location-dot"></i>&nbsp;Ville</p>
-            <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
-        </div>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="img/test2.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <div class="div-info">
-            <p><i class="fa-solid fa-location-dot"></i>&nbsp;Ville</p>
-            <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
-        </div>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="img/test2.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <div class="div-info">
-            <p><i class="fa-solid fa-location-dot"></i>&nbsp;Ville</p>
-            <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
-        </div>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="img/test2.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <div class="div-info">
-            <p><i class="fa-solid fa-location-dot"></i>&nbsp;Ville</p>
-            <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
-        </div>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="img/test2.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <div class="div-info">
-            <p><i class="fa-solid fa-location-dot"></i>&nbsp;Ville</p>
-            <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
-        </div>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
+      @endforeach
   
 </div>
 </div>
