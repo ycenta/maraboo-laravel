@@ -42,12 +42,6 @@ class MaraboutController extends Controller
         } else {
             abort(403);
         }
-
-
-
-        // $message2 = new Message;
-        // $message2->body = $request->message;
-        // $message2->save();
     }
 
     public function update(Request $request, Marabout $marabout)
