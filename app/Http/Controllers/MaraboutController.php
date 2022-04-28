@@ -23,7 +23,14 @@ class MaraboutController extends Controller
 
     public function createMarabout(Request $request)
     {
+
         // Message::where('id','!=',1)->get();
+
+        if($request->file('avatar')) {
+            $file = $request->file('avatar');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('public/Image'), $filename);
+
 
         $marabout = Marabout::create([
             'name' => $request->maraboutname,
@@ -31,16 +38,11 @@ class MaraboutController extends Controller
             'phone'=>$request->phone,
             'address'=>$request->address,
             'mail'=>$request->mail,
-            'picture_url'=>'url_du_cul'
+            'picture_url'=>$filename,
         ]);
 
+        }
         return redirect()->route('profilmarabout',['id'=>$marabout->id]);
-
-
-
-        // $message2 = new Message;
-        // $message2->body = $request->message;
-        // $message2->save();
     }
 
     public function update(Request $request, Marabout $marabout)
