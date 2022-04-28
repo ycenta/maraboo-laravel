@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaraboutController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,16 @@ Route::get('/formmarabout', function() {
 
 Route::get('/profilemarabout/{id}', [MaraboutController::class, 'profileMarabout'])
     ->name('profilmarabout');
+
+Route::get('/formcomment/{id}', function($id){
+    return view('create-comment', ['id'=>$id]);
+})
+    ->name('comment.form');
+
+Route::post('/createcomment/', [CommentController::class, 'createComment'])
+    ->name('comment.create');
+
+/*Route::patch('/comment/{comment}', [CommentController::class, 'update'])
+    ->name('comment.update');*/
 
 require __DIR__.'/auth.php';

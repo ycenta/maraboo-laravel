@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Marabout;
+use App\Models\Comment;
 use Auth;
 
 class MaraboutController extends Controller
@@ -57,7 +58,8 @@ class MaraboutController extends Controller
     public function profileMarabout(Request $request, $id)
     {
         $marabout = Marabout::where('id','=',$id)->first();
+        $comments = Comment::where('marabout_id','=',$id)->get();
 
-        return view('profile-marabout', compact('marabout'));
+        return view('profile-marabout', compact('marabout', 'comments'));
     }
 }
