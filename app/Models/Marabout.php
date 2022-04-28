@@ -9,7 +9,7 @@ class Marabout extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','activity_begin_date','phone','address','mail','picture_url'];
+    protected $fillable = ['name','activity_begin_date','phone','address','mail','picture_url','resume','user_id'];
 
     public function comments()
     {

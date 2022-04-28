@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>XD</title>
+    <title>Laravel</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -32,6 +32,10 @@
             color: white !important;
         }
 
+        .nav-item > a {
+            color: white !important;
+        }
+
         #title {
             margin: 40px auto 65px auto;
             text-align: center;
@@ -50,40 +54,19 @@
             color: var(--dark-purple);
         }
 
-        .card > img {
-            width: 100%;
-            height: 20vw;
-            object-fit: cover;
+        #list {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .div-info {
-            display: flex;
-            justify-content: space-between;
+        #list > div > a {
+            color: var(--dark-purple) !important;
         }
 
-        .div-info > p {
-            display: inline-flex;
-        }
-
-        .div-info > p > i {
-            line-height: 1.4 !important;
-        }
-
-        .fa-location-dot {
-            color: #b133ff;
-        }
-
-        .fa-star {
-            color: #ffb833;
-        }
-
-        div > h5 {
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .card-body {
-            text-align: justify;
+        .fa-right-from-bracket {
+            color: white;
+            font-size: 22px;
         }
 
     </style>
@@ -98,59 +81,34 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Utilisateurs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                    <a class="nav-link" href="#">Catégories de sorts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="#">Commentaires</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <a href="#"><i class="fa-solid fa-right-from-bracket"></i></a>
         </div>
     </div>
 </nav>
+
 <div id="title">
     <h1>
-        <i class="fa-solid fa-wand-sparkles"></i>&nbsp; Trouvez le profil qui correspond à vos besoins &nbsp;<i class="fa-solid fa-wand-sparkles"></i>
+        <i class="fa-solid fa-wand-sparkles"></i>&nbsp; Liste des utilisateurs &nbsp;<i class="fa-solid fa-wand-sparkles"></i>
     </h1>
     <hr>
 </div>
 
-<div id="content" class="container">
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-      @foreach($marabouts as $marabout)
-      <div class="col">
-        <div class="card">
-          <img src="img/test.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{ $marabout->name }}</h5>
-            <div class="div-info">
-                <p><i class="fa-solid fa-location-dot"></i>&nbsp;{{ $marabout->address }}</p>
-                <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
-            </div>
-            <p class="card-text">{{ $marabout->resume }}</p>
-          </div>
-        </div>
-      </div>
-      @endforeach
-  
-</div>
+<div id="list" class="card">
+    <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action">The current link item</a>
+        <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+        <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+        <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+    </div>
 </div>
 
 </body>
