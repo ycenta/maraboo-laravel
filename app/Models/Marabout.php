@@ -10,4 +10,12 @@ class Marabout extends Model
     use HasFactory;
 
     protected $fillable = ['name','activity_begin_date','phone','address','mail','picture_url'];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'marabout_id');
+    }
 }
+
+
+
