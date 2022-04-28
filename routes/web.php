@@ -37,15 +37,15 @@ Route::patch('/marabout/{marabout}', [MaraboutController::class, 'update'])
 
 Route::get('/formmarabout', function() {
     return view('create-marabout');
-})
-    ->name('marabout.form');
+})->name('marabout.form');
 
 Route::get('/profilemarabout/{id}', [MaraboutController::class, 'profileMarabout'])
     ->name('profilmarabout');
 
-    return view('create-comment', ['id'=>$id]);
-})
-    ->name('comment.form');
+
+Route::get('/formcomment/{id}', function($id){
+        return view('create-comment', ['id'=>$id]);
+    })->name('comment.form');
 
 Route::post('/createcomment', [CommentController::class, 'createComment'])
     ->name('comment.create');
