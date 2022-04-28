@@ -25,6 +25,7 @@ class MaraboutController extends Controller
     {
         // Message::where('id','!=',1)->get();
 
+        
         $marabout = Marabout::create([
             'name' => $request->maraboutname,
             'activity_begin_date' => $request->activity_begin_date,
@@ -51,6 +52,14 @@ class MaraboutController extends Controller
 
         // return redirect()->route('messages.show', ['message' => $message]);
         return redirect()->route('profilmarabout',['id'=>$marabout->id]);
+    }
+
+    public function delete(Request $request, Marabout $marabout)
+    {
+        $marabout->delete();
+
+        // return redirect()->route('messages.show', ['message' => $message]);
+        return redirect()->route('home');
     }
 
     public function profileMarabout(Request $request, $id)
