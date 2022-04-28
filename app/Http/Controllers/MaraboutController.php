@@ -17,7 +17,7 @@ class MaraboutController extends Controller
     public function showMarabouts(Request $request)
     {
         $marabouts = Marabout::paginate(32);
-        return view('welcome', compact('marabouts'));
+        return view('home', compact('marabouts'));
 
     }
 

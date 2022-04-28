@@ -15,16 +15,16 @@ use App\Http\Controllers\MaraboutController;
 */
 
 Route::get('/', [MaraboutController::class, 'showMarabouts'])
-    ->name('welcome');
+    ->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})
-    ->middleware(['auth'])
-    ->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })
+//     ->middleware(['auth'])
+//     ->name('dashboard');
 
-Route::get('/showmarabouts', [MaraboutController::class, 'showMarabouts'])
-    ->name('marabout.show');
+// Route::get('/showmarabouts', [MaraboutController::class, 'showMarabouts'])
+//     ->name('marabout.show');
 
 Route::post('/createmarabout', [MaraboutController::class, 'createMarabout'])
     ->middleware(['auth'])
