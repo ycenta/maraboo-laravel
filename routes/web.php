@@ -14,9 +14,8 @@ use App\Http\Controllers\MaraboutController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MaraboutController::class, 'showMarabouts'])
+    ->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
