@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Marabout extends Model
 {
     use HasFactory;
+
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'marabout_id');
+    }
 }
+
+
+
