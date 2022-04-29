@@ -46,7 +46,7 @@ class SpellController extends Controller
         $spell->delete();
 
         // return redirect()->route('messages.show', ['message' => $message]);
-        return redirect()->route('home');
+        return redirect()->route('spell.form');
     }
 
 

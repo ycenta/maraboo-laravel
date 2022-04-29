@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Marabout;
 use App\Models\Comment;
 use Auth;
-
+use DB;
 class MaraboutController extends Controller
 {
     public function show(Marabout $marabout)
@@ -19,6 +19,14 @@ class MaraboutController extends Controller
     public function showMarabouts(Request $request)
     {
         $marabouts = Marabout::paginate(32);
+        if(Auth::user()){
+          $userid =   Auth::user()->id;
+         $marabout_user = DB::table('marabouts')->where('user_id','=',$userid)->first();
+
+         return view('home', compact('marabouts','marabout_user'));
+
+        }
+
         return view('home', compact('marabouts'));
 
     }
@@ -45,7 +53,7 @@ class MaraboutController extends Controller
             'user_id'=>$id,
             'picture_url'=>$filename,
         ]);
-        
+
         return redirect()->route('profilmarabout',['marabout'=>$marabout]);
         } else {
             abort(403);
@@ -65,7 +73,7 @@ class MaraboutController extends Controller
     {
         $marabout->delete();
 
-        return redirect()->route('home');
+        return redirect()->route('dashboardadmin');
     }
 
     public function profileMarabout(Request $request, Marabout $marabout)

@@ -124,13 +124,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Utilisateurs</a>
+                    <a class="nav-link" href="{{route('dashboardadmin')}}">Utilisateurs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Catégories de sorts</a>
+                    <a class="nav-link" href="{{route('spell.form')}}">Catégories de sorts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Commentaires</a>
+                    <a class="nav-link" href="{{route('comment.form')}}">Commentaires</a>
                 </li>
             </ul>
             <a href="#"><i class="fa-solid fa-right-from-bracket"></i></a>
@@ -166,7 +166,7 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-hat-wizard"></i></span>
                         <input type="text" name="spellname" class="form-control" aria-label="Username" value="{{$spell->name}}" aria-describedby="basic-addon1">
-                        <input type="submit" class="btn btn-outline-secondary" name="Modifier">
+                        <button type="submit" class="btn btn-outline-secondary" name="Modifier" >Modifier</button>
                     </div>
                 </form>
             </td>
@@ -174,7 +174,7 @@
                 <form action={{route('spell.delete',['spell'=>$spell])}} method="post">
                 @csrf
                 @method('DELETE')
-                    <input type="submit" class="btn btn-outline-secondary" name="Supprimer"><i class="fa-solid fa-trash"></i></input>
+                    <button type="submit" class="btn btn-outline-secondary" name="Supprimer"><i class="fa-solid fa-trash"></i></button>
                 </form>
             </td>
         </tr>

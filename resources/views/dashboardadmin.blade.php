@@ -68,6 +68,35 @@
             color: white;
             font-size: 22px;
         }
+        #table-spells {
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #table-spells > tbody > tr > td:first-child {
+            padding-left: 0 !important;
+        }
+
+        #table-spells > tbody > tr > td:first-child button {
+            background-color: var(--dark-purple);
+            color: white;
+        }
+
+        #table-spells > tbody > tr > td:last-child {
+            text-align: center;
+        }
+
+        #table-spells > tbody > tr > td:last-child button {
+            color: white;
+            background-color: #801f2d;
+            border-color: var(--dark-purple);
+        }
+
+        table td {
+            border: none !important;
+            padding: 0 !important;
+        }
 
     </style>
 </head>
@@ -81,13 +110,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Utilisateurs</a>
+                    <a class="nav-link" href="{{route('dashboardadmin')}}">Utilisateurs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Catégories de sorts</a>
+                    <a class="nav-link" href="{{route('spell.form')}}">Catégories de sorts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Commentaires</a>
+                    <a class="nav-link" href="{{route('comment.form')}}">Commentaires</a>
                 </li>
             </ul>
             <a href="#"><i class="fa-solid fa-right-from-bracket"></i></a>
@@ -102,14 +131,22 @@
     <hr>
 </div>
 
-<div id="list" class="card">
-    <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action">The current link item</a>
-        <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-        <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-        <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-    </div>
-</div>
+<table id="table-spells" class="table">
+    <tbody>
+    @foreach($marabouts as $marabout)
+    <tr>
+        <td>{{$marabout->name}}</td>
+        <td>
+            <form action="{{route('marabout.delete',['marabout'=>$marabout->id])}}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-outline-secondary" name="Supprimer"><i class="fa-solid fa-trash"></i></button>
+            </form>
+        </td>
+    </tr>
+    @endforeach
+    </tbody>
+</table>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

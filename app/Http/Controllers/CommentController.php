@@ -9,13 +9,14 @@ use Auth;
 
 class CommentController extends Controller
 {
-    
+
+
     public function createComment(Request $request)
     {
 
         $user_id = Auth::id();
         $marabout = Marabout::where('id','=',$request->marabout_id)->first();
-       
+
         if ($user_id && $marabout) {
             $comment = Comment::create([
                 "user_id"=>$user_id,
@@ -27,14 +28,20 @@ class CommentController extends Controller
         } else {
             abort(403);
         }
-        
+
     }
 
     public function delete(Request $request, Comment $comment)
     {
 
         $comment->delete();
-        
+
+    }
+    public function showComments(Request $request)
+    {
+        $comments = Comment::get();
+        return view('comments', compact('comments'));
+
     }
 
     /*public function update(Request $request, Comment $comment)

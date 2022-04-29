@@ -86,6 +86,10 @@
             text-align: justify;
         }
 
+        .card-text{
+            height: 60px;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -97,26 +101,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @if(isset($marabout_user))
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="{{ route('profilmarabout',['marabout'=>$marabout_user->id]) }}" style="color: white">Profile</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('marabout.form')}}" style="color: white">Devenir marabout</a>
+                    </li>
+                @endif
             </ul>
             <span class="d-flex">
                 @if (Auth::user())
@@ -156,14 +149,13 @@
             <h5 class="card-title">{{ $marabout->name }}</h5>
             <div class="div-info">
                 <p><i class="fa-solid fa-location-dot"></i>&nbsp;{{ $marabout->address }}</p>
-                <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
             </div>
             <p class="card-text">{{ $marabout->resume }}</p>
           </div>
         </div>
       </div>
       @endforeach
-  
+
 </div>
 </div>
 

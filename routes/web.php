@@ -5,6 +5,9 @@ use App\Http\Controllers\MaraboutController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SpellController;
 
+use App\Models\Marabout;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +45,10 @@ Route::get('/dashboard', function () {
             ->middleware(['auth'])
             ->name('marabout.create');
 
+        Route::delete('/marabout/{marabout}', [MaraboutController::class, 'delete'])
+            ->middleware(['auth'])
+            ->name('marabout.delete');
+
         Route::patch('/marabout/{marabout}', [MaraboutController::class, 'update'])
             ->middleware(['auth'])
             ->name('marabout.update');
@@ -64,9 +71,8 @@ Route::get('/dashboard', function () {
     /**
      * Commentaire
      */
-    Route::get('/formcomment/{id}', function($id){
-            return view('create-comment', ['id'=>$id]); // Formulaire à VIRER
-        })->name('comment.form');
+    Route::get('/admin/comment',[CommentController::class, 'showComments'])
+        ->name('comment.form');
 
     Route::post('/createcomment', [CommentController::class, 'createComment'])
         ->name('comment.create');
@@ -78,18 +84,28 @@ Route::get('/dashboard', function () {
      * Spells
      */
 
-    Route::get('/spell', [SpellController::class, 'showSpells'])
+    Route::get('/admin/spell', [SpellController::class, 'showSpells'])
     ->name('spell.form');
 
-    Route::post('/createspell', [SpellController::class, 'createSpell'])
+    Route::post('/admin/createspell', [SpellController::class, 'createSpell'])
     ->name('spell.create');
 
-    Route::patch('/spell/{spell}', [SpellController::class, 'update'])
+    Route::patch('/admin/spell/{spell}', [SpellController::class, 'update'])
     ->name('spell.update');
 
-    Route::delete('/spell/{spell}', [SpellController::class, 'delete'])
+    Route::delete('/admin/spell/{spell}', [SpellController::class, 'delete'])
     ->name('spell.delete');
 
+
+/**
+ * Admin
+ */
+
+Route::get('/admin', function () {
+    $marabouts = Marabout::get();
+    return view('dashboardadmin',compact('marabouts'));
+})
+    ->name('dashboardadmin');
 
 
 /*Route::patch('/comment/{comment}', [CommentController::class, 'update'])
