@@ -118,10 +118,24 @@
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <span class="d-flex">
+                @if (Auth::user())
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <input type="submit" value="Logout">
+                </form>
+                @else
+                <form method="GET" action="{{ route('register') }}">
+                    @csrf
+                    <input type="submit" value="Register">
+                </form>
+                &nbsp;
+                <form method="GET" action="{{ route('login') }}">
+                    @csrf
+                    <input type="submit" value="Login">
+                </form>
+                @endif
+            </span>
         </div>
     </div>
 </nav>
@@ -137,7 +151,7 @@
       @foreach($marabouts as $marabout)
       <div class="col">
         <div class="card">
-          <img src="img/test.jpeg" class="card-img-top" alt="...">
+          <img src="image/{{ $marabout->picture_url }}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ $marabout->name }}</h5>
             <div class="div-info">
