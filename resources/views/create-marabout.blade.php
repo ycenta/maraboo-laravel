@@ -9,14 +9,14 @@
 	<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"><br><br>
 
 	<div class="list-group">
-      <label for="">Spécialités : </label><br>
-      @foreach ($spells as $spell)
-      <label class="list-group-item">
-        <input name="spells_list[]" class="form-check-input me-1" type="checkbox" value="{{ $spell->id }}">
-        {{ $spell->name }}
-      </label>
-      @endforeach
-    </div>	
+    <label for="">Spécialités : </label><br>
+    @foreach ($spells as $spell)
+    <label class="list-group-item">
+      <input name="spells_list[]" class="form-check-input me-1" type="checkbox" value="{{ $spell->id }}">
+      {{ $spell->name }}
+    </label>
+    @endforeach
+  </div>	
 
 	<input type="submit" value="Create Maraboo">
 </form>

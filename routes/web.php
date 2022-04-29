@@ -57,9 +57,7 @@ Route::get('/dashboard', function () {
         ->middleware(['auth'])
         ->name('marabout.form');
 
-        Route::get('/updatemarabout', function() { //formulaire A VIRER
-            return view('update-marabout');
-        })
+        Route::get('/updatemarabout/{marabout}', [MaraboutController::class, 'updateFormMarabout'])
         ->middleware(['auth'])
         ->name('marabout.updateform');
 

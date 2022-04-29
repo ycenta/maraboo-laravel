@@ -77,7 +77,11 @@ class MaraboutController extends Controller
     public function update(Request $request, Marabout $marabout)
     {
         $marabout->update([
-            'name' => $request->maraboutname,
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'mail' =>$request->mail,
+            'address' => $request->address,
+            'resume'=> $request->resume
         ]);
 
         return redirect()->route('profilmarabout',['marabout'=>$marabout]);
@@ -111,5 +115,12 @@ class MaraboutController extends Controller
         $spells = Spell::all();
 
         return view('create-marabout', ["spells"=>$spells]);
+    }
+
+    public function updateFormMarabout(Request $request, Marabout $marabout)
+    {
+        $spells = Spell::all();
+
+        return view('update-marabout', ["spells"=>$spells, "marabout"=>$marabout]);
     }
 }
