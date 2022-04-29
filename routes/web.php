@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaraboutController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SpellController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,10 @@ use App\Http\Controllers\CommentController;
 // Route::get('/', [MaraboutController::class, 'showMarabouts'])
 //     ->name('home');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})
+    ->name('dashboard');
 //     ->middleware(['auth'])
 //     ->name('dashboard');
 
@@ -77,15 +79,15 @@ use App\Http\Controllers\CommentController;
      */
 
     Route::get('/spell', [SpellController::class, 'showSpells'])
-    ->name('comment.form');
+    ->name('spell.form');
 
     Route::post('/createspell', [SpellController::class, 'createSpell'])
     ->name('spell.create');
 
-    Route::patch('/spell/{comment}', [SpellController::class, 'update'])
+    Route::patch('/spell/{spell}', [SpellController::class, 'update'])
     ->name('spell.delete');
 
-    Route::delete('/spell/{comment}', [SpellController::class, 'delete'])
+    Route::delete('/spell/{spell}', [SpellController::class, 'delete'])
     ->name('spell.delete');
 
 

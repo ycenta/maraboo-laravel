@@ -25,7 +25,7 @@ class CommentController extends Controller
 
             return redirect()->route('profilmarabout',['marabout'=>$marabout]);
         } else {
-            abort(404);
+            abort(403);
         }
         
     }
