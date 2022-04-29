@@ -12,7 +12,7 @@ class MaraboutController extends Controller
     public function show(Marabout $marabout)
     {
         return view('marabout', [
-            'marabout' => $marabouts]);
+            'marabout' => $marabout]);
 
     }
 
@@ -46,7 +46,7 @@ class MaraboutController extends Controller
             'picture_url'=>$filename,
         ]);
         
-        return redirect()->route('profilmarabout',['id'=>$marabout->id]);
+        return redirect()->route('profilmarabout',['marabout'=>$marabout]);
         } else {
             abort(403);
         }
@@ -55,26 +55,24 @@ class MaraboutController extends Controller
     public function update(Request $request, Marabout $marabout)
     {
         $marabout->update([
-            'name' => $request->name,
+            'name' => $request->maraboutname,
         ]);
 
-        // return redirect()->route('messages.show', ['message' => $message]);
-        return redirect()->route('profilmarabout',['id'=>$marabout->id]);
+        return redirect()->route('profilmarabout',['marabout'=>$marabout]);
     }
 
     public function delete(Request $request, Marabout $marabout)
     {
         $marabout->delete();
 
-        // return redirect()->route('messages.show', ['message' => $message]);
         return redirect()->route('home');
     }
 
-    public function profileMarabout(Request $request, $id)
+    public function profileMarabout(Request $request, Marabout $marabout)
     {
-        $marabout = Marabout::where('id','=',$id)->first();
-        $comments = Comment::where('marabout_id','=',$id)->get();
+        // $marabout = Marabout::where('id','=',$id)->first();
+        // $comments = Comment::where('marabout_id','=',$id)->get();
 
-        return view('profile-marabout', compact('marabout', 'comments'));
+        return view('profile-marabout', compact('marabout'));
     }
 }

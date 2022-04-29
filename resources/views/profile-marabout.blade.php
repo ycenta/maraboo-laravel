@@ -4,15 +4,15 @@
 <p><b>Address : </b> {{ $marabout->address }} </p>
 <p><b>Mail : </b> {{ $marabout->mail }} </p>
 <p><b>Picture : </b> {{ $marabout->picture_url }} </p>
-<p><b>Member since : </b> {{ $marabout->created_at->diffForHumans() }} </p>
 
 <br><br><br>
 
+<!-- <p><b>Member since : </b> {{ $marabout->created_at->diffForHumans() }} </p> -->
 <a href="{{ route('comment.form', ['id'=>$marabout->id]) }}">Add a comment</a>
 
 <br><hr><br>
 
-@foreach($comments as $comment)
+@foreach($marabout->comments as $comment)
 {{ $comment->content }}
 <br>
 {{ $comment->created_at->diffForHumans() }}

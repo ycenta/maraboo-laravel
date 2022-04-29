@@ -23,10 +23,17 @@ class CommentController extends Controller
                 "content"=>$request->content
             ]);
 
-            return redirect()->route('profilmarabout',['id'=>$marabout->id]);
+            return redirect()->route('profilmarabout',['marabout'=>$marabout]);
         } else {
             abort(404);
         }
+        
+    }
+
+    public function delete(Request $request, Comment $comment)
+    {
+
+        $comment->delete();
         
     }
 
