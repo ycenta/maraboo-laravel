@@ -86,56 +86,51 @@
             text-align: justify;
         }
 
+        .card-href {
+            text-decoration: none;
+            color: black;
+        }
+
+        .card-href:hover {
+            color: black;
+            text-decoration: none;
+            filter: drop-shadow(0 0 0.75rem lightblue);
+        }
+
     </style>
 </head>
 <body class="antialiased">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Maraboo &nbsp;<i class="fa-solid fa-hat-wizard"></i></a>
+        <a class="navbar-brand" href="/">Maraboo &nbsp;<i class="fa-solid fa-hat-wizard"></i></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
             </ul>
-            <span class="d-flex">
-                @if (Auth::user())
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <input type="submit" value="Logout">
-                </form>
-                @else
-                <form method="GET" action="{{ route('register') }}">
-                    @csrf
-                    <input type="submit" value="Register">
-                </form>
-                &nbsp;
-                <form method="GET" action="{{ route('login') }}">
-                    @csrf
-                    <input type="submit" value="Login">
-                </form>
-                @endif
-            </span>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @if (Auth::user())
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}" class="nav-link">
+                            @csrf
+                            <input type="submit" value="Logout">
+                        </form>
+                    </li>
+                    @else
+                    <li>
+                        <a href="{{ route('register') }}">Register</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('login') }}">Login</a>
+                    </li>
+                    @endif
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
@@ -149,22 +144,23 @@
 <div id="content" class="container">
     <div class="row row-cols-1 row-cols-md-4 g-4">
       @foreach($marabouts as $marabout)
-      <div class="col">
-        <div class="card">
-          <img src="image/{{ $marabout->picture_url }}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{ $marabout->name }}</h5>
-            <div class="div-info">
-                <p><i class="fa-solid fa-location-dot"></i>&nbsp;{{ $marabout->address }}</p>
-                <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
+        <a class="card-href" href="{{ route('profilmarabout', ['marabout'=>$marabout]) }}">
+          <div class="col">
+            <div class="card">
+              <img src="image/{{ $marabout->picture_url }}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{ $marabout->name }}</h5>
+                <div class="div-info">
+                    <p><i class="fa-solid fa-location-dot"></i>&nbsp;{{ $marabout->address }}</p>
+                    <p>10/10&nbsp;<i class="fa-solid fa-star"></i></p>
+                </div>
+                <p class="card-text">{{ $marabout->resume }}</p>
+              </div>
             </div>
-            <p class="card-text">{{ $marabout->resume }}</p>
           </div>
-        </div>
-      </div>
-      @endforeach
-  
-</div>
+      </a>
+      @endforeach  
+    </div>
 </div>
 
 </body>
