@@ -19,18 +19,19 @@ class SpellController extends Controller
     public function showSpells(Request $request)
     {
         $spells = Spell::get();
-        return view('spells', compact('spells'));
+        return view('categories', compact('spells'));
 
     }
 
     public function createSpell(Request $request)
     {
-        
+
         $spell = Spell::create([
-            'name' => $request->spellname          
+            'name' => $request->spellname,
+            'spell_type_id' => '0'
         ]);
 
-        return redirect()->route('profilmarabout',['marabout'=>$marabout]);
+        return redirect()->route('spell.form');
 
 
 
@@ -38,7 +39,7 @@ class SpellController extends Controller
         // $message2->body = $request->message;
         // $message2->save();
     }
-    
+
 
     public function delete(Request $request, Spell $spell)
     {
@@ -56,7 +57,7 @@ class SpellController extends Controller
         ]);
 
         // return redirect()->route('messages.show', ['message' => $message]);
-        return redirect()->route('spelllist',['spell'=>$spell]);
+        return redirect()->route('spell.form',['spell'=>$spell]);
     }
 
 

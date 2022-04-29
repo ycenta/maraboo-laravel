@@ -112,8 +112,7 @@
             border: none !important;
             padding: 0 !important;
         }
-
-    </style>
+            </style>
 </head>
 <body class="antialiased">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -146,35 +145,44 @@
     <hr>
 </div>
 
-<form id="form-add" action="">
+<form id="form-add" action={{route('spell.create')}} method="POST">
+    @csrf
+    @method('POST')
     <div class="input-group flex-nowrap mb-3">
       <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-hat-wizard"></i></span>
-      <input type="text" class="form-control" placeholder="Nom de la nouvelle catégorie" aria-label="Username" aria-describedby="addon-wrapping">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Ajouter la catégorie</button>
+      <input type="text" name="spellname" class="form-control" placeholder="Nom de la nouvelle catégorie" aria-label="Username" aria-describedby="addon-wrapping">
+      <input type="submit" class="btn btn-outline-secondary" id="button-addon2">
     </div>
 </form>
 
+@foreach($spells as $spell)
+    <table id="table-spells" class="table">
+        <tbody>
+        <tr>
+            <td>
+                <form action={{route('spell.update',['spell'=>$spell])}} method="post">
+                    @csrf
+                    @method('PATCH')
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-hat-wizard"></i></span>
+                        <input type="text" name="spellname" class="form-control" aria-label="Username" value="{{$spell->name}}" aria-describedby="basic-addon1">
+                        <input type="submit" class="btn btn-outline-secondary" name="Modifier">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <form action={{route('spell.delete',['spell'=>$spell])}} method="post">
+                @csrf
+                @method('DELETE')
+                    <input type="submit" class="btn btn-outline-secondary" name="Supprimer"><i class="fa-solid fa-trash"></i></input>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
-<table id="table-spells" class="table">
-  <tbody>
-    <tr>
-      <td>
-          <form action="">
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-hat-wizard"></i></span>
-                <input type="text" class="form-control" aria-label="Username" value="Nom de la catégorie de spell modifiable" aria-describedby="basic-addon1">
-                <button type="button" class="btn btn-outline-secondary">Modifier</button>
-              </div>
-          </form>
-      </td>
-      <td>
-          <form action="">
-              <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-trash"></i></button>
-          </form>
-      </td>
-    </tr>
-  </tbody>
-</table>
+@endforeach
+
 
 
 </body>

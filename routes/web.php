@@ -85,7 +85,7 @@ Route::get('/dashboard', function () {
     ->name('spell.create');
 
     Route::patch('/spell/{spell}', [SpellController::class, 'update'])
-    ->name('spell.delete');
+    ->name('spell.update');
 
     Route::delete('/spell/{spell}', [SpellController::class, 'delete'])
     ->name('spell.delete');
