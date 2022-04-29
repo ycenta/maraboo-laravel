@@ -28,7 +28,7 @@ class SpellController extends Controller
 
         $spell = Spell::create([
             'name' => $request->spellname,
-            'spell_type_id' => '0'
+            'spell_type_id' => 1
         ]);
 
         return redirect()->route('spell.form');
